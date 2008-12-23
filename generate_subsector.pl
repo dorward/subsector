@@ -1,34 +1,101 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use SVG;
+use XML::LibXML;
+use Carp;
+
+my $svgns = "http://www.w3.org/2000/svg";
+my $xlinkns = "http://www.w3.org/1999/xlink";
 
 # This is rough, ready and experimental!
 
 # I'm learning SVG as I go, and feeling my way through this on the way
 # Expect proper OO et al LATER.
 
-my $outline = {
-    fill => 'white',
-    stroke => '#000',
-    "stroke-width" => '5px',
-    "stroke-linejoin" => "miter",
-};
+my $doc = XML::LibXML->createDocument();
+$doc->setStandalone(1);
 
-my $system_number = {
-    "font-size" => "85",
-    fill => "#666",
-    stroke => 'none',
-    "text-anchor" => "middle",
-    "style" => "font-family: helvetica, arial"
-};
+my %root_attributes = (
+                    width => "230mm",
+                    height => "190mm",
+                    viewBox => "0 0 3000 5255",
+                    );
+my $root = $doc->createElementNS($svgns, 'svg');
+for my $key (keys %root_attributes) {
+    my $value = $root_attributes{$key};
+    $root->setAttribute($key, $value);
+}
+$doc->setDocumentElement($root);
 
+my $style_text = qq(
+                .hex {
+                        fill: white;
+                        stroke: #000;
+                        stroke-width: 5px;
+                        stroke-linejoin: miter
+                }
+                .coords {
+                        fill: #666;
+                        font-family: helvetica, arial;
+                        font-size: 85px;
+                        stroke: none;
+                        text-anchor: middle;
+                }
+);
+my $style = $doc->createElementNS($svgns, 'style');
+$style->setAttribute('type', 'text/css');
+my $style_text_node = $doc->createTextNode($style_text);
+$style->appendChild($style_text_node);
+$root->appendChild($style);
+
+my @systems = ();
+for (1..10) {
+    $systems[$_] = ();
+}
+
+my $initial_hex = createHex(1,1);
+my $initial_hex_line = createHexLine();
+$initial_hex->appendChild($initial_hex_line);
+$root->appendChild($initial_hex);
+
+
+print $doc->toString();
+
+
+sub createHex {
+    my ($row, $col) = @_;
+    my $id = sprintf("hex-%02d%02d", $col, $row);
+    my $hex = $doc->createElementNS($svgns, 'svg');
+    $hex->setAttribute('id', $id);
+    $hex->setAttribute('x', '0');
+    $hex->setAttribute('y', '0');
+    return $hex;
+}
+
+sub createHexLine {
+    my $hex_line;
+    if ($initial_hex_line) {
+        #<use xlink:href="#hex" />      
+        $hex_line =          
+    } else {
+        $hex_line = $doc->createElementNS($svgns, 'polygon');
+        $hex_line->setAttribute('id', 'hex');
+        $hex_line->setAttribute('class', 'hex');
+        $hex_line->setAttribute('points', '150,0 350,0 500,250 350,500 150,500 0,250');
+    }
+    return $hex_line;
+}
+
+__END__
+  
 my $svg = SVG->new(
                    width => "230mm",
                    height => "190mm",
                    viewBox => "0 0 3000 5255",
                    style => $outline
                 );
+
+# Create initial hex
 
 my @base_x = qw(150 350 500 350 150 0);
 my @base_y = qw(0 0 250 500 500 250);
