@@ -58,6 +58,12 @@ my $initial_hex_line = createHexLine();
 $initial_hex->appendChild($initial_hex_line);
 $root->appendChild($initial_hex);
 
+my $hex = createHex(2,1);
+my $hex_line = createHexLine();
+$hex->appendChild($hex_line);
+$root->appendChild($hex);
+
+
 
 print $doc->toString();
 
@@ -76,7 +82,8 @@ sub createHexLine {
     my $hex_line;
     if ($initial_hex_line) {
         #<use xlink:href="#hex" />      
-        $hex_line =          
+        $hex_line = $doc->createElementNS($svgns, 'use');
+        $hex_line->setAttributeNS($xlinkns, 'xlink:href', '#hex');
     } else {
         $hex_line = $doc->createElementNS($svgns, 'polygon');
         $hex_line->setAttribute('id', 'hex');
