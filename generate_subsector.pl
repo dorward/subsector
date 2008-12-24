@@ -16,8 +16,8 @@ my $doc = XML::LibXML->createDocument();
 $doc->setStandalone(1);
 
 my %root_attributes = (
-                    width => "230mm",
-                    height => "190mm",
+                    width =>   "744.09448", #"230mm",
+                    height => "1052.3622",  #"190mm",
                     viewBox => "0 0 3000 5255",
                     );
 my $root = $doc->createElementNS($svgns, 'svg');
@@ -41,6 +41,10 @@ my $style_text = qq(
                         stroke: none;
                         text-anchor: middle;
                 }
+		.planet {
+			fill: #000;
+			stroke: none;
+		}
 );
 my $style = $doc->createElementNS($svgns, 'style');
 $style->setAttribute('type', 'text/css');
@@ -81,6 +85,9 @@ my $y_shift = 500 * ($row - 1);
 	$hex->appendChild($hex_line);
 	my $hex_label = createHexLabel($col, $row);
 	$hex->appendChild($hex_label);
+
+	$hex->appendChild(createPlanet());
+
     return $hex;
 }
 
@@ -103,6 +110,16 @@ sub createHexLabel {
 	return $text;
 }
 
+sub createPlanet {
+	return createSvgElement('circle', cx => 250, cy => 250, r => 25, class => 'planet'); 
+}
+
+sub createTravelZone {
+	my $zone_type = shift;
+	return createSvgElement('circle', cx => 250, cy => 250, r => 25, class => "travel_zone $zone_type"); 
+}
+
+
 sub createSvgElement {
 	my $name = shift;
 	my %attributes = @_;
@@ -112,7 +129,6 @@ sub createSvgElement {
 	}	
 	return $element;
 }
-
 
 __END__
   
