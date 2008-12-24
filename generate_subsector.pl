@@ -55,6 +55,10 @@ my $style_text = qq(
 		.travel_zone.red {
 			fill: #ddd;
 		}
+		.station {
+			fill: #000;
+			stroke: none;
+		}
 );
 my $style = $doc->createElementNS($svgns, 'style');
 $style->setAttribute('type', 'text/css');
@@ -92,8 +96,8 @@ my $y_shift = 500 * ($row - 1);
     $hex->setAttribute('x', $x_shift);
     $hex->setAttribute('y', $y_shift);
 	my $hex_line = createHexLine();
-	$hex->appendChild($hex_line);
 
+	$hex->appendChild($hex_line);
 
 	$hex->appendChild(createTravelZone( (($row + $col) % 2) ? 'amber' : 'red'));
 
@@ -102,13 +106,13 @@ my $y_shift = 500 * ($row - 1);
 
 
 	$hex->appendChild(createPlanet());
+	$hex->appendChild(createScoutStation());
     return $hex;
 }
 
 sub createHexLine {
     my $hex_line;
     $hex_line = $doc->createElementNS($svgns, 'polygon');
-    $hex_line->setAttribute('id', 'hex');
     $hex_line->setAttribute('class', 'hex');
     $hex_line->setAttribute('points', '150,0 350,0 500,250 350,500 150,500 0,250');
     return $hex_line;
@@ -143,6 +147,17 @@ sub createSvgElement {
 	}	
 	return $element;
 }
+
+
+sub createScoutStation {
+    my $hex_line;
+    $hex_line = $doc->createElementNS($svgns, 'polygon');
+    $hex_line->setAttribute('class', 'scout station');
+    $hex_line->setAttribute('points', '080,215 130,215 105,175');
+    return $hex_line;
+}
+
+
 
 __END__
   
