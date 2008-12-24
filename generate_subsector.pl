@@ -45,12 +45,11 @@ my $style_text = qq(
 			fill: #000;
 			stroke: none;
 		}
-		.travel_zone {
+		.travel_zone,
+		.ring {
+			fill: none;
 			stroke: #000;
 			stroke-width: 3px;
-		}
-		.travel_zone.amber {
-			fill: none;
 		}
 		.travel_zone.red {
 			fill: #ddd;
@@ -81,7 +80,6 @@ for my $col (1..10) {
 
 print $doc->toString();
 
-
 sub createHex {
     my ($row, $col) = @_;
     my $id = sprintf("hex-%02d%02d", $col, $row);
@@ -107,6 +105,7 @@ my $y_shift = 500 * ($row - 1);
 
 	$hex->appendChild(createPlanet());
 	$hex->appendChild(createScoutStation());
+	$hex->appendChild(createGasGiant());
     return $hex;
 }
 
@@ -155,6 +154,16 @@ sub createScoutStation {
     $hex_line->setAttribute('class', 'scout station');
     $hex_line->setAttribute('points', '080,215 130,215 105,175');
     return $hex_line;
+}
+
+sub createGasGiant {
+	my $container = createSvgElement('svg', x => 300, y => 100, height => 70, width => 70);
+	my $e = createSvgElement('ellipse', cx => 35, cy => 35, rx => 35, ry => 12, class => 'ring',
+					transform => "rotate(-22 35 35)") ;
+	my $p = createSvgElement('circle', cx => 35, cy => 35, r => 20, class => 'planet');
+	$container->appendChild($e);
+	$container->appendChild($p);
+	return $container;
 }
 
 
