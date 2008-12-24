@@ -53,16 +53,12 @@ for (1..10) {
     $systems[$_] = ();
 }
 
-my $initial_hex = createHex(1,1);
-my $initial_hex_line = createHexLine();
-$initial_hex->appendChild($initial_hex_line);
-$root->appendChild($initial_hex);
-
-my $hex = createHex(2,1);
-my $hex_line = createHexLine();
-$hex->appendChild($hex_line);
-$root->appendChild($hex);
-
+for my $col (1..10) {
+	for my $row (1..8) {
+		my $hex = createHex($col,$row);
+		$root->appendChild($hex);
+	}
+}
 
 
 print $doc->toString();
@@ -73,25 +69,50 @@ sub createHex {
     my $id = sprintf("hex-%02d%02d", $col, $row);
     my $hex = $doc->createElementNS($svgns, 'svg');
     $hex->setAttribute('id', $id);
-    $hex->setAttribute('x', '0');
-    $hex->setAttribute('y', '0');
+my $x_shift = 350 * ($col - 1);
+my $y_shift = 500 * ($row - 1);
+       unless ($col % 2) {
+            $y_shift = $y_shift + 250;
+        }
+  
+    $hex->setAttribute('x', $x_shift);
+    $hex->setAttribute('y', $y_shift);
+	my $hex_line = createHexLine();
+	$hex->appendChild($hex_line);
+	my $hex_label = createHexLabel($col, $row);
+	$hex->appendChild($hex_label);
     return $hex;
 }
 
 sub createHexLine {
     my $hex_line;
-    if ($initial_hex_line) {
-        #<use xlink:href="#hex" />      
-        $hex_line = $doc->createElementNS($svgns, 'use');
-        $hex_line->setAttributeNS($xlinkns, 'xlink:href', '#hex');
-    } else {
-        $hex_line = $doc->createElementNS($svgns, 'polygon');
-        $hex_line->setAttribute('id', 'hex');
-        $hex_line->setAttribute('class', 'hex');
-        $hex_line->setAttribute('points', '150,0 350,0 500,250 350,500 150,500 0,250');
-    }
+    $hex_line = $doc->createElementNS($svgns, 'polygon');
+    $hex_line->setAttribute('id', 'hex');
+    $hex_line->setAttribute('class', 'hex');
+    $hex_line->setAttribute('points', '150,0 350,0 500,250 350,500 150,500 0,250');
     return $hex_line;
 }
+
+sub createHexLabel {
+	my $col = shift;
+	my $row = shift;
+	my %attributes = (x => 250, y => 90, class => 'coords');
+        my $text = createSvgElement('text', %attributes);
+	my $tNode = $doc->createTextNode(sprintf("%02d%02d", $col, $row));	
+	$text->appendChild($tNode);
+	return $text;
+}
+
+sub createSvgElement {
+	my $name = shift;
+	my %attributes = @_;
+	my $element = $doc->createElementNS($svgns, $name);
+	for my $key (keys %attributes) {
+		$element->setAttribute($key, $attributes{$key});
+	}	
+	return $element;
+}
+
 
 __END__
   
