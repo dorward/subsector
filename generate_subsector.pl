@@ -45,6 +45,16 @@ my $style_text = qq(
 			fill: #000;
 			stroke: none;
 		}
+		.travel_zone {
+			stroke: #000;
+			stroke-width: 3px;
+		}
+		.travel_zone.amber {
+			fill: none;
+		}
+		.travel_zone.red {
+			fill: #ddd;
+		}
 );
 my $style = $doc->createElementNS($svgns, 'style');
 $style->setAttribute('type', 'text/css');
@@ -83,11 +93,15 @@ my $y_shift = 500 * ($row - 1);
     $hex->setAttribute('y', $y_shift);
 	my $hex_line = createHexLine();
 	$hex->appendChild($hex_line);
+
+
+	$hex->appendChild(createTravelZone( (($row + $col) % 2) ? 'amber' : 'red'));
+
 	my $hex_label = createHexLabel($col, $row);
 	$hex->appendChild($hex_label);
 
-	$hex->appendChild(createPlanet());
 
+	$hex->appendChild(createPlanet());
     return $hex;
 }
 
@@ -116,7 +130,7 @@ sub createPlanet {
 
 sub createTravelZone {
 	my $zone_type = shift;
-	return createSvgElement('circle', cx => 250, cy => 250, r => 25, class => "travel_zone $zone_type"); 
+	return createSvgElement('circle', cx => 250, cy => 250, r => 150, class => "travel_zone $zone_type"); 
 }
 
 
