@@ -12,6 +12,10 @@ my $xlinkns = "http://www.w3.org/1999/xlink";
 # I'm learning SVG as I go, and feeling my way through this on the way
 # Expect proper OO et al LATER.
 
+# TODO
+# * Moose
+# * Add <desc> elements for each hex
+
 my $doc = XML::LibXML->createDocument();
 $doc->setStandalone(1);
 
