@@ -54,9 +54,10 @@ my $style_text = qq(
 		.travel_zone.red {
 			fill: #ddd;
 		}
-		.station {
+		.base {
 			fill: #000;
-			stroke: none;
+			stroke: #fff;
+			stroke-width: 3px;
 		}
 );
 my $style = $doc->createElementNS($svgns, 'style');
@@ -104,8 +105,9 @@ my $y_shift = 500 * ($row - 1);
 
 
 	$hex->appendChild(createPlanet());
-	$hex->appendChild(createScoutStation());
 	$hex->appendChild(createGasGiant());
+	$hex->appendChild(createScoutBase());
+	$hex->appendChild(createNavalBase());
     return $hex;
 }
 
@@ -148,10 +150,10 @@ sub createSvgElement {
 }
 
 
-sub createScoutStation {
+sub createScoutBase {
     my $hex_line;
     $hex_line = $doc->createElementNS($svgns, 'polygon');
-    $hex_line->setAttribute('class', 'scout station');
+    $hex_line->setAttribute('class', 'scout base');
     $hex_line->setAttribute('points', '080,215 130,215 105,175');
     return $hex_line;
 }
@@ -163,6 +165,13 @@ sub createGasGiant {
 	my $p = createSvgElement('circle', cx => 35, cy => 35, r => 20, class => 'planet');
 	$container->appendChild($e);
 	$container->appendChild($p);
+	return $container;
+}
+
+sub createNavalBase {
+	my $container = createSvgElement('svg', x => 145, y => 100, height => 50, width => 50);
+	my $s = createSvgElement('polygon', class => 'naval base', points => '25,0 31.09,18.07 50,18.07 34.87,29.41 40.34,47.48 25,36.76 9.66,47.48 15.13,29.41 0,18.07 18.91,18.07');
+	$container->appendChild($s);
 	return $container;
 }
 
