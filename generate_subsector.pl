@@ -59,6 +59,15 @@ my $style_text = qq(
 			stroke: #fff;
 			stroke-width: 3px;
 		}
+		.TAS circle {
+			fill: #fff;
+			stroke: none;
+		}
+		.TAS polygon {
+			fill: #000;
+			stroke: #fff;
+			stroke-width: 3px;
+		}
 );
 my $style = $doc->createElementNS($svgns, 'style');
 $style->setAttribute('type', 'text/css');
@@ -109,6 +118,7 @@ my $y_shift = 500 * ($row - 1);
 	$hex->appendChild(createScoutBase());
 	$hex->appendChild(createNavalBase());
 	$hex->appendChild(createImperialConsulateBase());
+	$hex->appendChild(createTASBase());
 
     return $hex;
 }
@@ -183,3 +193,43 @@ sub createImperialConsulateBase {
 }
 
 
+sub createTASBase {
+	my $container = createSvgElement('svg', x => 75, y => 230, height => 50, width => 50, class => "TAS");
+	my $c = createSvgElement('circle', cx => 25, cy => 25, r => 12);
+	my @outer = pointsOnCircle(9,22,25,25);
+	my @inner = pointsOnCircle(9,14,25,25, 0.5);
+	my $points = '';
+	my $l = scalar @outer - 1 ;
+	for my $pos ( 0..$l) {
+		my $opoint = $outer[$pos]->{x} . ',' . $outer[$pos]->{y} . ' ';
+		my $ipoint = $inner[$pos]->{x} . ',' . $inner[$pos]->{y} . ' ';
+		$points .= $opoint . $ipoint;
+	}
+	my $p = createSvgElement('polygon', points => $points, style => 'fill: black;');
+	$container->appendChild($p);
+	$container->appendChild($c);
+	return $container;
+}
+
+
+use Math::Trig;
+sub pointsOnCircle {
+	my $points = shift;
+	my $r = shift;
+	my $cx = shift;
+	my $cy = shift;
+	my $offset = shift || 0;
+	
+	my @coords;
+
+	my $angle = 2 * pi / $points;
+	for (1..$points) {
+		my $t = ($_ + $offset) * $angle;
+		my $coord = {
+			x => $cy + cos($t) * $r,
+			y => $cx + sin($t) * $r
+		};
+		push @coords, $coord;
+	}
+	return @coords;
+}
