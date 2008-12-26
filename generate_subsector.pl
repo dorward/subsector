@@ -40,9 +40,14 @@ my $style_text = qq(
                 }
                 .coords {
                         fill: #666;
+                        stroke: none;
+		}
+		text {
+			fill: #000;
+			stroke: #fff;
+			stroke-width: 1px;
                         font-family: helvetica, arial;
                         font-size: 85px;
-                        stroke: none;
                         text-anchor: middle;
                 }
 		.planet {
@@ -123,6 +128,7 @@ my $y_shift = 500 * ($row - 1);
 	$hex->appendChild(createNavalBase());
 	$hex->appendChild(createImperialConsulateBase());
 	$hex->appendChild(createTASBase());
+	$hex->appendChild(createStarport('B'));
 
     return $hex;
 }
@@ -212,6 +218,17 @@ sub createTASBase {
 	my $p = createSvgElement('polygon', points => $points, style => 'fill: black;');
 	$container->appendChild($p);
 	$container->appendChild($c);
+	return $container;
+}
+
+sub createStarport {
+	my $class = shift;
+        my $container = createSvgElement('svg', x => 0, y => 110, height => 250, width => 500, class => "starport");
+	my %attributes = (x => 250, y => 85, class => 'starport');
+        my $text = createSvgElement('text', %attributes);
+	my $tNode = $doc->createTextNode($class);	
+	$text->appendChild($tNode);
+	$container->appendChild($text);
 	return $container;
 }
 
