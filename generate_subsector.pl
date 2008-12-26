@@ -44,12 +44,17 @@ my $style_text = qq(
 		}
 		text {
 			fill: #000;
-			stroke: #fff;
-			stroke-width: 1px;
+			stroke: none;
                         font-family: helvetica, arial;
                         font-size: 85px;
                         text-anchor: middle;
                 }
+		.systemName {
+			stroke: #fff;
+			stroke-width: 1px;
+			font-weight: bold;
+			font-family: deja vu sans, verdana;
+		}
 		.planet {
 			fill: #000;
 			stroke: none;
@@ -129,6 +134,7 @@ my $y_shift = 500 * ($row - 1);
 	$hex->appendChild(createImperialConsulateBase());
 	$hex->appendChild(createTASBase());
 	$hex->appendChild(createStarport('B'));
+	$hex->appendChild(createSystemName('Sol'));
 
     return $hex;
 }
@@ -232,6 +238,17 @@ sub createStarport {
 	return $container;
 }
 
+
+sub createSystemName {
+	my $name = shift;
+        my $container = createSvgElement('svg', x => 0, y => 360, height => 250, width => 500, class => "starport");
+	my %attributes = (x => 250, y => 85, class => 'systemName');
+        my $text = createSvgElement('text', %attributes);
+	my $tNode = $doc->createTextNode($name);	
+	$text->appendChild($tNode);
+	$container->appendChild($text);
+	return $container;
+}
 
 use Math::Trig;
 sub pointsOnCircle {
