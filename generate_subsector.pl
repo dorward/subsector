@@ -200,6 +200,7 @@ sub createScoutBase {
 
 sub createGasGiant {
 	my $container = createSvgElement('svg', x => 300, y => 100, height => 70, width => 70);
+        $container->appendChild(createTitle('Gas giant'));
 	my $e = createSvgElement('ellipse', cx => 35, cy => 35, rx => 35, ry => 12, class => 'ring',
 					transform => "rotate(-22 35 35)") ;
 	my $p = createSvgElement('circle', cx => 35, cy => 35, r => 20, class => 'planet');
@@ -210,6 +211,7 @@ sub createGasGiant {
 
 sub createNavalBase {
 	my $container = createSvgElement('svg', x => 145, y => 100, height => 50, width => 50);
+        $container->appendChild(createTitle('Naval base'));
 	my $s = createSvgElement('polygon', class => 'naval base', points => '25,0 31.09,18.07 50,18.07 34.87,29.41 40.34,47.48 25,36.76 9.66,47.48 15.13,29.41 0,18.07 18.91,18.07');
 	$container->appendChild($s);
 	return $container;
