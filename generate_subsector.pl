@@ -191,11 +191,11 @@ sub createSvgElement {
 
 
 sub createScoutBase {
-    my $hex_line;
-    $hex_line = $doc->createElementNS($svgns, 'polygon');
-    $hex_line->setAttribute('class', 'scout base');
-    $hex_line->setAttribute('points', '080,215 130,215 105,175');
-    return $hex_line;
+    my $container = createSvgElement('svg', x => 80, y => 175, height => 70, width => 70, class => "scout base");
+    $container->appendChild(createTitle('Scout base'));
+    my $s = createSvgElement('polygon', 'points' => '0,40 50,40 25,0');
+    $container->appendChild($s);
+    return $container;
 }
 
 sub createGasGiant {
