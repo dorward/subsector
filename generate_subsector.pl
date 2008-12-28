@@ -241,9 +241,18 @@ sub createTASBase {
 
 sub createPirateBase {
 	my $container = createSvgElement('svg', x => 110, y => 125, height => 55, width => 55, class => "Pirate");
+        $container->appendChild(createTitle('Pirate base'));
 	my $p = createSvgElement('path', d => $pirate_path, style => "fill: #000");
 	$container->appendChild($p);
 	return $container;
+}
+
+sub createTitle {
+    my $title = shift;
+    my $e = createSvgElement('title');
+    my $n = $doc->createTextNode($title);
+    $e->appendChild($n);
+    return $e;
 }
 
 sub createStarport {
