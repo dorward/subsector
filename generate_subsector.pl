@@ -223,6 +223,7 @@ sub createImperialConsulateBase {
 
 sub createTASBase {
 	my $container = createSvgElement('svg', x => 75, y => 230, height => 50, width => 50, class => "TAS");
+        $container->appendChild(createTitle('TAS base'));
 	my $c = createSvgElement('circle', cx => 25, cy => 25, r => 12);
 	my @outer = pointsOnCircle(9,22,25,25);
 	my @inner = pointsOnCircle(9,14,25,25, 0.5);
@@ -258,6 +259,7 @@ sub createTitle {
 sub createStarport {
 	my $class = shift;
         my $container = createSvgElement('svg', x => 0, y => 110, height => 250, width => 500, class => "starport");
+        $container->appendChild(createTitle('Starport Class'));
 	my %attributes = (x => 250, y => 85, class => 'starport');
         my $text = createSvgElement('text', %attributes);
 	my $tNode = $doc->createTextNode($class);	
@@ -270,6 +272,7 @@ sub createStarport {
 sub createSystemName {
 	my $name = shift;
         my $container = createSvgElement('svg', x => 0, y => 360, height => 250, width => 500, class => "starport");
+        $container->appendChild(createTitle('System name'));
 	my %attributes = (x => 250, y => 85, class => 'systemName');
         my $text = createSvgElement('text', %attributes);
 	my $tNode = $doc->createTextNode($name);	
