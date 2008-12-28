@@ -216,8 +216,11 @@ sub createNavalBase {
 }
 
 sub createImperialConsulateBase {
-	my $s = createSvgElement('rect', class => 'imperialConsulate base', x => 100, y => 300, height => 50, width => 50);
-	return $s;
+    	my $container = createSvgElement('svg', x => 90, y => 290, height => 50, width => 50, class => "imperialConsulate base");
+        $container->appendChild(createTitle('Imperial Consulate base'));
+	my $s = createSvgElement('rect', class => 'imperialConsulate base', x => 5, y => 5, height => 40, width => 40);
+        $container->appendChild($s);
+	return $container;
 }
 
 
