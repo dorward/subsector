@@ -1,43 +1,53 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<svg height="190mm"
-     width="230mm"
-     viewBox="0 0 3000 5255"
-     xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink">
-	<style type="text/css">
-		.hex {
-			fill: white;
-			stroke: #000;
-			stroke-width: 5px;
-			stroke-linejoin: miter
+<?xml version="1.0" standalone="yes"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="744.09448" viewBox="0 0 3000 5255" height="1052.3622"><style type="text/css">
+                .hex {
+                        fill: white;
+                        stroke: #000;
+                        stroke-width: 5px;
+                        stroke-linejoin: miter
+                }
+                .coords {
+                        fill: #666;
+                        stroke: none;
 		}
-		.coords {
-			fill: #666;
-			font-family: helvetica, arial;
-			font-size: 85px;
+		text {
+			fill: #000;
 			stroke: none;
-			text-anchor: middle;
+                        font-family: helvetica, arial;
+                        font-size: 85px;
+                        text-anchor: middle;
+                }
+		.systemName {
+			stroke: #fff;
+			stroke-width: 1px;
+			font-weight: bold;
+			font-family: deja vu sans, verdana;
 		}
-	</style>
-	<svg id="hex-0101">
-		<polygon id="hex" class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"  />
-		<text class="coords" x="250" y="90">
-			0101
-		</text>
-	</svg>
-
-	<svg id="hex-0102" x="0" y="500">
-		<use xlink:href="#hex" />
-		<text class="coords" x="250" y="90">
-			0102
-		</text>
-	</svg>
-	
-	<svg id="hex-0201" x="350" y="250">
-		<use xlink:href="#hex" />
-		<text class="coords" x="250" y="90">
-			0201
-		</text>
-	</svg>
-	
-</svg>
+		.planet {
+			fill: #000;
+			stroke: none;
+		}
+		.travel_zone,
+		.ring {
+			fill: none;
+			stroke: #000;
+			stroke-width: 3px;
+		}
+		.travel_zone.red {
+			fill: #ddd;
+		}
+		.base {
+			fill: #000;
+			stroke: #fff;
+			stroke-width: 3px;
+		}
+		.TAS circle {
+			fill: #fff;
+			stroke: none;
+		}
+		.TAS polygon {
+			fill: #000;
+			stroke: #fff;
+			stroke-width: 3px;
+		}
+</style><svg id="hex-0101" x="0" y="0"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0101</text></svg><svg id="hex-0201" x="350" y="250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0201</text></svg><svg id="hex-0301" x="700" y="0"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0301</text></svg><svg id="hex-0401" x="1050" y="250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0401</text></svg><svg id="hex-0501" x="1400" y="0"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0501</text></svg><svg id="hex-0601" x="1750" y="250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0601</text></svg><svg id="hex-0701" x="2100" y="0"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0701</text></svg><svg id="hex-0801" x="2450" y="250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0801</text></svg><svg id="hex-0102" x="0" y="500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0102</text></svg><svg id="hex-0202" x="350" y="750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0202</text></svg><svg id="hex-0302" x="700" y="500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0302</text></svg><svg id="hex-0402" x="1050" y="750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0402</text></svg><svg id="hex-0502" x="1400" y="500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0502</text></svg><svg id="hex-0602" x="1750" y="750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0602</text></svg><svg id="hex-0702" x="2100" y="500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0702</text></svg><svg id="hex-0802" x="2450" y="750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0802</text></svg><svg id="hex-0103" x="0" y="1000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0103</text></svg><svg id="hex-0203" x="350" y="1250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0203</text></svg><svg id="hex-0303" x="700" y="1000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0303</text></svg><svg id="hex-0403" x="1050" y="1250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0403</text></svg><svg id="hex-0503" x="1400" y="1000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0503</text></svg><svg id="hex-0603" x="1750" y="1250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0603</text></svg><svg id="hex-0703" x="2100" y="1000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0703</text></svg><svg id="hex-0803" x="2450" y="1250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0803</text></svg><svg id="hex-0104" x="0" y="1500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0104</text></svg><svg id="hex-0204" x="350" y="1750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0204</text></svg><svg id="hex-0304" x="700" y="1500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0304</text></svg><svg id="hex-0404" x="1050" y="1750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0404</text></svg><svg id="hex-0504" x="1400" y="1500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0504</text></svg><svg id="hex-0604" x="1750" y="1750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0604</text></svg><svg id="hex-0704" x="2100" y="1500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0704</text></svg><svg id="hex-0804" x="2450" y="1750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0804</text></svg><svg id="hex-0105" x="0" y="2000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0105</text></svg><svg id="hex-0205" x="350" y="2250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0205</text></svg><svg id="hex-0305" x="700" y="2000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0305</text></svg><svg id="hex-0405" x="1050" y="2250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0405</text></svg><svg id="hex-0505" x="1400" y="2000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0505</text></svg><svg id="hex-0605" x="1750" y="2250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0605</text></svg><svg id="hex-0705" x="2100" y="2000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0705</text></svg><svg id="hex-0805" x="2450" y="2250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0805</text></svg><svg id="hex-0106" x="0" y="2500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0106</text></svg><svg id="hex-0206" x="350" y="2750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0206</text></svg><svg id="hex-0306" x="700" y="2500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0306</text></svg><svg id="hex-0406" x="1050" y="2750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0406</text></svg><svg id="hex-0506" x="1400" y="2500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0506</text></svg><svg id="hex-0606" x="1750" y="2750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0606</text></svg><svg id="hex-0706" x="2100" y="2500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0706</text></svg><svg id="hex-0806" x="2450" y="2750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0806</text></svg><svg id="hex-0107" x="0" y="3000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0107</text></svg><svg id="hex-0207" x="350" y="3250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0207</text></svg><svg id="hex-0307" x="700" y="3000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0307</text></svg><svg id="hex-0407" x="1050" y="3250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0407</text></svg><svg id="hex-0507" x="1400" y="3000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0507</text></svg><svg id="hex-0607" x="1750" y="3250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0607</text></svg><svg id="hex-0707" x="2100" y="3000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0707</text></svg><svg id="hex-0807" x="2450" y="3250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0807</text></svg><svg id="hex-0108" x="0" y="3500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0108</text></svg><svg id="hex-0208" x="350" y="3750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0208</text></svg><svg id="hex-0308" x="700" y="3500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0308</text></svg><svg id="hex-0408" x="1050" y="3750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0408</text></svg><svg id="hex-0508" x="1400" y="3500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0508</text></svg><svg id="hex-0608" x="1750" y="3750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0608</text></svg><svg id="hex-0708" x="2100" y="3500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0708</text></svg><svg id="hex-0808" x="2450" y="3750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0808</text></svg><svg id="hex-0109" x="0" y="4000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0109</text></svg><svg id="hex-0209" x="350" y="4250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0209</text></svg><svg id="hex-0309" x="700" y="4000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0309</text></svg><svg id="hex-0409" x="1050" y="4250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0409</text></svg><svg id="hex-0509" x="1400" y="4000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0509</text></svg><svg id="hex-0609" x="1750" y="4250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0609</text></svg><svg id="hex-0709" x="2100" y="4000"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0709</text></svg><svg id="hex-0809" x="2450" y="4250"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0809</text></svg><svg id="hex-0110" x="0" y="4500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0110</text></svg><svg id="hex-0210" x="350" y="4750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0210</text></svg><svg id="hex-0310" x="700" y="4500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0310</text></svg><svg id="hex-0410" x="1050" y="4750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0410</text></svg><svg id="hex-0510" x="1400" y="4500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0510</text></svg><svg id="hex-0610" x="1750" y="4750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0610</text></svg><svg id="hex-0710" x="2100" y="4500"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0710</text></svg><svg id="hex-0810" x="2450" y="4750"><polygon class="hex" points="150,0 350,0 500,250 350,500 150,500 0,250"/><text y="90" x="250" class="coords">0810</text></svg></svg>

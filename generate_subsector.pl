@@ -23,6 +23,7 @@ my %root_attributes = (
                     width =>   "744.09448", #"230mm",
                     height => "1052.3622",  #"190mm",
                     viewBox => "0 0 3000 5255",
+# For sectors                    viewBox => "0 0 12000 " . (5255 * 4),
                     );
 my $root = $doc->createElementNS($svgns, 'svg');
 for my $key (keys %root_attributes) {
@@ -94,8 +95,14 @@ for (1..10) {
     $systems[$_] = ();
 }
 
+# For subsectors
 for my $col (1..10) {
 	for my $row (1..8) {
+
+## For sectors
+#for my $col (1..40) {
+#	for my $row (1..32) {
+
 		my $hex = createHex($col,$row);
 		$root->appendChild($hex);
 	}
@@ -121,7 +128,7 @@ my $y_shift = 500 * ($row - 1);
 
 	$hex->appendChild($hex_line);
 
-	$hex->appendChild(createTravelZone( (($row + $col) % 2) ? 'amber' : 'red'));
+	#$hex->appendChild(createTravelZone( (($row + $col) % 2) ? 'amber' : 'red'));
 
 	my $hex_label = createHexLabel($col, $row);
 	$hex->appendChild($hex_label);
