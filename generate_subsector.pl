@@ -16,14 +16,31 @@ my $xlinkns = "http://www.w3.org/1999/xlink";
 # TODO
 # * Moose
 
+###########
+# Load systems
+use Data::Dumper;
+my @system_data = ();
 
-
-
-
-
-
-
-
+while (my $line = <STDIN>) {
+    chomp $line;
+    my $uwp = Games::Traveller::UWP->new();
+    $uwp->readUwp( $line );
+    if (defined $uwp->name()) {
+        my $col = $uwp->col();
+        my $row = $uwp->row();
+        unless (defined $system_data[$col]) {
+            $system_data[$col] = [];
+        }
+        $system_data[$col][$row] = $uwp;
+    }
+    if ($uwp->bases) {
+        print Dumper $uwp->bases;
+        print "\n";
+    }
+}
+exit();
+# Done loading subsectors
+###########
 
 
 my $doc = XML::LibXML->createDocument();
@@ -113,11 +130,16 @@ for (1..10) {
 for my $col (1..10) {
 	for my $row (1..8) {
 
+        my $uwp;
+        if ($system_data[$col] && $system_data[$col][$row]) {
+            $uwp = $system_data[$col][$row];
+        }
+
 ## For sectors
 #for my $col (1..40) {
 #	for my $row (1..32) {
 
-		my $hex = createHex($col,$row);
+		my $hex = createHex($col,$row, $uwp);
 		$root->appendChild($hex);
 	}
 }
@@ -126,38 +148,40 @@ for my $col (1..10) {
 print $doc->toString(2);
 
 sub createHex {
-    my ($row, $col) = @_;
+    my ($row, $col, $uwp) = @_;
     my $id = sprintf("hex-%02d%02d", $col, $row);
     my $hex = $doc->createElementNS($svgns, 'svg');
     $hex->setAttribute('id', $id);
-my $x_shift = 350 * ($col - 1);
-my $y_shift = 500 * ($row - 1);
+    my $x_shift = 350 * ($col - 1);
+    my $y_shift = 500 * ($row - 1);
        unless ($col % 2) {
             $y_shift = $y_shift + 250;
         }
-  
     $hex->setAttribute('x', $x_shift);
     $hex->setAttribute('y', $y_shift);
-	my $hex_line = createHexLine();
 
-	$hex->appendChild($hex_line);
+    my $hex_line = createHexLine();
 
-	$hex->appendChild(createTravelZone( (($row + $col) % 2) ? 'amber' : 'red'));
+    $hex->appendChild($hex_line);
+    
+    if (my $zone = $uwp->zone) {
+        $hex->appendChild(createTravelZone( ($zone eq "A") ? 'amber' : 'red'));
+    }
 
-	my $hex_label = createHexLabel($col, $row);
-	$hex->appendChild($hex_label);
+    my $hex_label = createHexLabel($col, $row);
+    $hex->appendChild($hex_label);
 
-
-	$hex->appendChild(createPlanet());
-	$hex->appendChild(createGasGiant());
-	$hex->appendChild(createScoutBase());
-	$hex->appendChild(createNavalBase());
-	$hex->appendChild(createImperialConsulateBase());
-	$hex->appendChild(createTASBase());
-        $hex->appendChild(createPirateBase());
-        $hex->appendChild(createResearchBase());
-	$hex->appendChild(createStarport('B'));
-	$hex->appendChild(createSystemName('Sol'));
+    $hex->appendChild(createPlanet());
+    # TODO - find out how to represent gas giants
+    #$hex->appendChild(createGasGiant());
+    $hex->appendChild(createScoutBase());
+    $hex->appendChild(createNavalBase());
+    $hex->appendChild(createImperialConsulateBase());
+    $hex->appendChild(createTASBase());
+    $hex->appendChild(createPirateBase());
+    $hex->appendChild(createResearchBase());
+    $hex->appendChild(createStarport('B'));
+    $hex->appendChild(createSystemName('Sol'));
 
     return $hex;
 }
