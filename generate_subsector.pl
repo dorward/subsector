@@ -350,3 +350,15 @@ sub pointsOnCircle {
 	}
 	return @coords;
 }
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2008-2009 David Dorward
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the Artistic License version 2.0.
+
+You are encouraged to contact the author if you wish to discuss
+alternative licensing terms.
+
+=back
